@@ -7,9 +7,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    with open('details.json', 'r') as datafile:
-        data = json.load(datafile)
-    df = pd.DataFrame(data)
+    df = pd.read_json('src/details.json')
     ls = []
     for data in df['HeightCm']:
         ls.append(int(data) / 100)
